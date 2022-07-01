@@ -111,21 +111,6 @@ http://127.0.0.1:8000/swagger/
 
 # 🏂 СКРИНШОТЫ :
 
-<style>
-img{
-box-shadow: 0px 10px 15px 10px #222;
-}
-img:hover {
-box-shadow: 0 0 0 1px #ccc,
-0 -20px 10px -5px #6BFA76,
-20px 0 10px -5px #FBC16A,
-0 20px 10px -5px #F4F171,
--20px 0 10px -5px #6BA5FA;	
--webkit-transition: all 0.5s ease;
--moz-transition: all 0.5s ease;
-transition: all 0.5s ease;
-}
-</style>
 ## Общие результаты работы
 <details><summary>Админка + SWAGGER (общие результаты работы)</summary>
 
@@ -281,3 +266,19 @@ Rating - Список всех оставленых Оценок Специал�
 8<img src="https://i.ibb.co/VLLcQKK/screencapture-127-0-0-1-8000-auth-users-2022-07-01-12-22-50.png" width="300">
 
 </details>
+
+<style>
+img{
+box-shadow: 0px 10px 15px 10px #222;
+}
+img:hover {
+box-shadow: 0 0 0 1px #ccc,
+0 -20px 10px -5px #6BFA76,
+20px 0 10px -5px #FBC16A,
+0 20px 10px -5px #F4F171,
+-20px 0 10px -5px #6BA5FA;	
+-webkit-transition: all 0.5s ease;
+-moz-transition: all 0.5s ease;
+transition: all 0.5s ease;
+}
+</style>
