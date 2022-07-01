@@ -110,6 +110,7 @@ http://127.0.0.1:8000/swagger/
 </details>
 
 # 🏂 СКРИНШОТЫ :
+
 <style>
 img{
 box-shadow: 0px 10px 15px 10px #222;
