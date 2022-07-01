@@ -4,7 +4,6 @@ from rest_framework import generics, permissions, viewsets # [14]
 # from rest_framework.views import APIView # удалили [9]
 from django_filters.rest_framework import DjangoFilterBackend
 
-# from .models import Movie, Actor
 from .models import Service, Appointment, Review, Rating, TimeLocation, Worker, Location, Schedule
 
 
@@ -29,7 +28,6 @@ from .serializers import (
     ScheduleListSelializer,
     ScheduleDetailSelializer,
 )
-# from .service import get_client_ip, MovieFilter, PaginationMovies
 from .service import get_client_ip, ServiceFilter, PaginationService, AppointmentFilter, PaginationAppointment
 
 """###########################################################################
@@ -40,7 +38,7 @@ class ServiceViewSet(viewsets.ReadOnlyModelViewSet):
     """ [GET] Вывод списка Услуг \n
     * ReadOnlyModelViewSet - может выводить и список и одну запись """
     filter_backends = (DjangoFilterBackend,) #подключили фильт django
-    filterset_class = ServiceFilter # http://127.0.0.1:8001/api/v1/movie/?year_min=1983&year_max=2022&genres=Боевик
+    filterset_class = ServiceFilter # http://127.0.0.1:8001/api/v1/service/?cost_min=100&cost_max=2000
     pagination_class = PaginationService
 
     # def get_queryset(self):
@@ -65,7 +63,7 @@ class AppointmentViewSet(viewsets.ReadOnlyModelViewSet):
     """ [GET] Вывод списка Записей на приём \n
     * ReadOnlyModelViewSet - может выводить и список и одну запись """
     filter_backends = (DjangoFilterBackend,) #подключили фильт django
-    filterset_class = AppointmentFilter # http://127.0.0.1:8001/api/v1/movie/?year_min=1983&year_max=2022&genres=Боевик
+    filterset_class = AppointmentFilter # http://127.0.0.1:8001/api/v1/appointment/?dutation_min=10&dutation_max=60
     pagination_class = PaginationAppointment
 
     # def get_queryset(self):

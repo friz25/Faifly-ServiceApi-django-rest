@@ -13,108 +13,94 @@ admin.site.site_header = "Faifly-ServiceApi-django-rest"
 admin.site.register(Time)
 admin.site.register(RatingStar)
 
-# admin.site.register(ServiceCategory)
-# admin.site.register(Worker)
-# admin.site.register(Location)
-# admin.site.register(TimeLocation)
-# admin.site.register(Schedule)
-# admin.site.register(Service)
-# admin.site.register(Appointment)
-# admin.site.register(ServiceShots)
-# admin.site.register(Rating)
-# admin.site.register(Review)
-
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
-class ServiceAdminForm(forms.ModelForm):
-    """GOOD
 
-    Текстовый редактор CKEditor"""
+class ServiceAdminForm(forms.ModelForm):
+    """Текстовый редактор CKEditor"""
     description = forms.CharField(label="Описание", widget=CKEditorUploadingWidget())  # переименовано
+
     # description_en = forms.CharField(label="Description", widget=CKEditorUploadingWidget()) # удалено
 
     class Meta:
         model = Service
         fields = '__all__'
 
-class AppointmentAdminForm(forms.ModelForm):
-    """GOOD
 
-    Текстовый редактор CKEditor"""
+class AppointmentAdminForm(forms.ModelForm):
+    """Текстовый редактор CKEditor"""
     description = forms.CharField(label="Описание", widget=CKEditorUploadingWidget())  # переименовано
+
     # description_en = forms.CharField(label="Description", widget=CKEditorUploadingWidget()) # удалено
 
     class Meta:
         model = Appointment
         fields = '__all__'
+
+
 """################################ ACTOR ######################################
 """
+
+
 @admin.register(Worker)
 class WorkerAdmin(admin.ModelAdmin):
-    """GOOD
-
-    Специалисты"""
-    list_display = ("name", "speciality", "email",  "phone", "get_image", "draft")
-    readonly_fields = ("get_image", )
+    """Специалисты"""
+    list_display = ("name", "speciality", "email", "phone", "get_image", "draft")
+    readonly_fields = ("get_image",)
 
     def get_image(self, obj):
         try:
             return mark_safe(f'<img src={obj.image.url} width="100" height="120">')
         except:
             return ""
+
     get_image.short_descriprion = "Изображение"
+
 
 @admin.register(Location)
 class LocationAdmin(admin.ModelAdmin):
-    """ GOOD
-
-    Локация / Кабинет """
-    list_display = ("name", "floor", "adress",  "speciality", "working_hours_start", "working_hours_end", "get_image")
-    readonly_fields = ("get_image", )
+    """Локация / Кабинет """
+    list_display = ("name", "floor", "adress", "speciality", "working_hours_start", "working_hours_end", "get_image")
+    readonly_fields = ("get_image",)
 
     def get_image(self, obj):
         try:
             return mark_safe(f'<img src={obj.image.url} width="100" height="120">')
         except:
             return ""
+
     get_image.short_descriprion = "Изображение"
+
 
 @admin.register(Schedule)
 class ScheduleAdmin(admin.ModelAdmin):
-    """GOOD
+    """Рабочие смены специалиста"""
+    list_display = ("name", "draft")  # , "get_image", "timelocation",
 
-    Рабочие смены специалиста"""
-    list_display = ("name", "draft") #, "get_image", "timelocation",
-    #readonly_fields = ("get_image", )
 
-    # def get_image(self, obj):
-    #     try:
-    #         return mark_safe(f'<img src={obj.image.url} width="100" height="120">')
-    #     except:
-    #         return ""
-    # get_image.short_descriprion = "Изображение"
 """################################ ACTOR ######################################
 """
 
+
 @admin.register(Rating)
 class RatingAdmin(admin.ModelAdmin):
-    """GOOD
-
-    Рейтинг Специалиста"""
+    """Рейтинг Специалиста"""
     list_display = ("star", "worker", "ip")
+
+
 @admin.register(TimeLocation)
 class TimeLocationAdmin(admin.ModelAdmin):
-    """GOOD
-
-    ВремяМесто"""
+    """ВремяМесто"""
     list_display = ("day_of_week", "time", "location", "worker", "ip")
+
+
 """################################ RATING ######################################
 """
+
+
 @admin.register(ServiceShots)
 class ServiceShotsAdmin(admin.ModelAdmin):
-    """GOOD
-
-    Кадры услуги """
+    """Кадры услуги """
     list_display = ("title", "service", "get_image")
     readonly_fields = ("get_image",)
 
@@ -123,61 +109,47 @@ class ServiceShotsAdmin(admin.ModelAdmin):
             return mark_safe(f'<img src={obj.image.url} width="150" height="100">')
         except:
             return ""
+
     get_image.short_description = "Изображение"
+
+
 """################################ ServiceShots ######################################
 """
+
+
 @admin.register(ServiceCategory)
 class ServiceCategoryAdmin(admin.ModelAdmin):
-    """GOOD
-
-    Категории Услуги"""
-    # fields = ['name', 'rating']
-    # exclude = ['slug']
-    # readonly_fields = ['year']
+    """Категории Услуги"""
     prepopulated_fields = {'url': ('name',)}
-    # filter_horizontal = ['directors', 'actors', 'genres']
-    # filter_vertical = ['actors']
     list_display = ['id', 'name', 'description']
     list_display_links = ['name']
     list_editable = ['description']
-    # ordering = ['rating', 'name']
     list_per_page = 10
-    # actions = ['set_dollars', 'set_euro']
     search_fields = ['name', 'description']  # + строка поиска
-    # list_filter = ['title', 'year', 'country', 'budget', 'draft']  # +фильтры справа
+
+
 """################################ ServiceCategory ######################################
 """
-class ReviewInline(admin.TabularInline):
-    """GOOD
 
-    Отзывы (на странице специалиста)"""
+
+class ReviewInline(admin.TabularInline):
+    """Отзывы (на странице специалиста)"""
     model = Review
     extra = 1
     readonly_fields = ['parent', 'name', 'email']
 
+
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    """GOOD
-
-    Отзывы  (на странице специалиста)"""
-    # fields = ['name', 'rating']
-    # exclude = ['parent']
-    # readonly_fields = ['parent', 'name', 'email']
-    # prepopulated_fields = {'url': ('title',)}
-    # filter_horizontal = ['movie']
-    # filter_vertical = ['actors']
+    """Отзывы  (на странице специалиста)"""
     list_display = ['name', 'email', 'text', 'parent', 'worker', 'id']
     list_editable = ['email', 'text', 'worker']
-    # ordering = ['rating', 'name']
     list_per_page = 10
-    # actions = ['set_dollars', 'set_euro']
     search_fields = ['name', 'text']  # + строка поиска
-    # list_filter = ['title', 'year', 'country', 'budget', 'draft']  # +фильтры справа
+
 
 class ServiceShotsInline(admin.TabularInline):
-    """GOOD
-
-    Кадры Услуги (на странице услуги)"""
+    """Кадры Услуги (на странице услуги)"""
     model = ServiceShots
     extra = 1
     readonly_fields = ['get_image']
@@ -187,32 +159,25 @@ class ServiceShotsInline(admin.TabularInline):
             return mark_safe(f'<img src={obj.image.url} width="150" height="100">')
         except:
             return ""
+
     get_image.short_description = "Изображение"
+
 
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
-    """GOOD
-
-     Услуга """
-    # fields = ['name', 'rating']
-    # exclude = ['slug']
-    form = ServiceAdminForm #CKEditor
+    """Услуга """
+    form = ServiceAdminForm  # CKEditor
     readonly_fields = ['get_poster_image']
-    # prepopulated_fields = {'url': ('title', )}
     filter_horizontal = ['workers']
-    # filter_vertical = ['actors']
     list_display = ['title', 'cost', 'duration', 'service_category', 'draft']
     list_filter = ['service_category']
     list_editable = ['duration', 'cost']
-    # ordering = ['rating', 'name']
     list_per_page = 10
     actions = ['unpublish', 'publish']
     search_fields = ['title', 'tagline', 'service_category__name']  # + строка поиска
-    # list_filter = ['title', 'year', 'country', 'budget', 'draft']  # +фильтры справа
-    inlines = [ServiceShotsInline] #[, ReviewInline] список [комментов, кадров из фильма] к фильму
+    inlines = [ServiceShotsInline]  # [, ReviewInline] список [комментов, кадров из фильма] к фильму
     save_on_top = True
     save_as = True
-    # fields = (("budget", "fees_in_usa", "fees_in_world"),)
     fieldsets = (
         (None, {
             "fields": (('title', 'tagline'),)
@@ -258,37 +223,29 @@ class ServiceAdmin(admin.ModelAdmin):
         self.message_user(request, f'{message_bit}')
 
     publish.short_description = "Опубликовать"
-    publish.allowed_permissions = ('change', )#у user'a должны быть права на "изменение"
+    publish.allowed_permissions = ('change',)  # у user'a должны быть права на "изменение"
 
     unpublish.short_description = "Снять с публикации"
-    unpublish.allowed_permissions = ('change', )#у user'a должны быть права на "изменение"
-"""################################ Service (Movie) ######################################
+    unpublish.allowed_permissions = ('change',)  # у user'a должны быть права на "изменение"
+
+
+"""################################ Service ######################################
 """
+
+
 @admin.register(Appointment)
 class AppointmentAdmin(admin.ModelAdmin):
-    """GOOD
-
-      Запись на приём (время, специалист, место)  """
-    # fields = ['name', 'rating']
-    # exclude = ['slug']
-    form = AppointmentAdminForm #CKEditor
-    # prepopulated_fields = {'url': ('title', )}
-    filter_horizontal = ['service'] #, 'schedule'
-    # filter_vertical = ['actors']
+    """Запись на приём (время, специалист, место)  """
+    form = AppointmentAdminForm  # CKEditor
+    filter_horizontal = ['service']  # , 'schedule'
     list_display = ['user_name', 'user_email', 'user_phone', 'appointment_date', 'draft']
     list_filter = ['service__service_category', 'appointment_date']
-    # list_editable = ['title']
-    # ordering = ['rating', 'name']
     list_per_page = 10
     actions = ['unpublish', 'publish']
     search_fields = ['user_name', 'user_email', 'user_phone', 'appointment_date', 'service__title']  # + строка поиска
-    # list_filter = ['title', 'year', 'country', 'budget', 'draft']  # +фильтры справа
-
-    # inlines = [AppointmentShotsInline, ReviewInline] #список [комментов, кадров из фильма] к фильму
 
     save_on_top = True
     save_as = True
-    # fields = (("budget", "fees_in_usa", "fees_in_world"),)
     fieldsets = (
         (None, {
             "fields": (('user_name',),)
@@ -334,10 +291,11 @@ class AppointmentAdmin(admin.ModelAdmin):
         self.message_user(request, f'{message_bit}')
 
     publish.short_description = "Опубликовать"
-    publish.allowed_permissions = ('change', )#у user'a должны быть права на "изменение"
+    publish.allowed_permissions = ('change',)  # у user'a должны быть права на "изменение"
 
     unpublish.short_description = "Снять с публикации"
-    unpublish.allowed_permissions = ('change', )#у user'a должны быть права на "изменение"
-"""################################ Appointment (Movie) ######################################
-"""
+    unpublish.allowed_permissions = ('change',)  # у user'a должны быть права на "изменение"
 
+
+"""################################ Appointment ######################################
+"""

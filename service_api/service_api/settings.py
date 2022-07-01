@@ -16,7 +16,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -27,7 +26,6 @@ SECRET_KEY = 'django-insecure-cb@+#h_-oco*(n=1)jk8&_d_q2%ymj!mq019b=@=*dl0ksrvj=
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -84,7 +82,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'service_api.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -95,7 +92,7 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'friz446625',
         'HOST': 'localhost',
-        'PORT':  '5432',
+        'PORT': '5432',
     }
 }
 
@@ -130,7 +127,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -142,21 +138,22 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_DIR = os.path.join(BASE_DIR, 'static') # STATIC_DIR='C:\\Django\\Faifly-ServiceApi-django-rest\\service_api\\static'
+STATIC_DIR = os.path.join(BASE_DIR,
+                          'static')  # STATIC_DIR='C:\\Django\\Faifly-ServiceApi-django-rest\\service_api\\static'
 print(f'{STATIC_DIR=}')
 STATICFILES_DIRS = [STATIC_DIR]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # MEDIA_ROOT='C:\\Django\\Faifly-ServiceApi-django-rest\\service_api\\media'
+MEDIA_ROOT = os.path.join(BASE_DIR,
+                          'media')  # MEDIA_ROOT='C:\\Django\\Faifly-ServiceApi-django-rest\\service_api\\media'
 print(f'{MEDIA_ROOT=}')
 
-STATIC_DIR='C:\\Django\\Faifly-ServiceApi-django-rest\\service_api\\static'
-MEDIA_ROOT='C:\\Django\\Faifly-ServiceApi-django-rest\\service_api\\media'
+STATIC_DIR = 'C:\\Django\\Faifly-ServiceApi-django-rest\\service_api\\static'
+MEDIA_ROOT = 'C:\\Django\\Faifly-ServiceApi-django-rest\\service_api\\media'
 
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:8080",
@@ -216,7 +213,7 @@ CKEDITOR_CONFIGS = {
         # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
         'tabSpaces': 4,
         'extraPlugins': ','.join([
-            'uploadimage', # the upload image feature
+            'uploadimage',  # the upload image feature
             # your extra plugins here
             'div',
             'autolink',
