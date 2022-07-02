@@ -185,7 +185,7 @@ Appointment (API) - Запись на приём
 
 Appointment - Запись на приём (в админке)
 
-4<img src="https://i.ibb.co/5kYTkcR/screencapture-127-0-0-1-8000-admin-services-appointment-3-change-2022-07-01-13-04-32.png" width="300">
+<img src="https://i.ibb.co/5kYTkcR/screencapture-127-0-0-1-8000-admin-services-appointment-3-change-2022-07-01-13-04-32.png" width="300">
 
 Appointment - Список всех Записей на приём (в админке)
 
@@ -241,22 +241,21 @@ Service (API) - Список всех Услуг
 
 <details><summary>Worker - Специалист </summary>
 
-Редактировать Специалиста (в админке) - Worker
+Worker - Редактировать Специалиста (в админке) 
 
-0<img src="https://i.ibb.co/cL2pXgj/screencapture-127-0-0-1-8000-admin-services-worker-5-change-2022-07-01-13-00-04.png" width="300">
+<img src="https://i.ibb.co/cL2pXgj/screencapture-127-0-0-1-8000-admin-services-worker-5-change-2022-07-01-13-00-04.png" width="300">
 
-Список Специалистов (в админке) - Worker
+Worker - Список Специалистов (в админке)
 
-1<img src="https://i.ibb.co/gmM0SDq/screencapture-127-0-0-1-8000-admin-services-worker-2022-07-01-12-59-48.png" width="300">
+<img src="https://i.ibb.co/gmM0SDq/screencapture-127-0-0-1-8000-admin-services-worker-2022-07-01-12-59-48.png" width="300">
 
 Workers (API) - Список всех Специалистов
 
-7<img src="https://i.ibb.co/yh4MYm6/screencapture-127-0-0-1-8000-api-v1-worker-2022-07-01-12-28-35.png" width="300">
+<img src="https://i.ibb.co/yh4MYm6/screencapture-127-0-0-1-8000-api-v1-worker-2022-07-01-12-28-35.png" width="300">
 
 Worker/1 (API) - Описание одного Специалиста
 
-0<img src="https://i.ibb.co/mqD3q0g/Workers-Django-REST-framework-Google-Chrome.jpg" width="300">
-
+<img src="https://i.ibb.co/mqD3q0g/Workers-Django-REST-framework-Google-Chrome.jpg" width="300">
 
 </details>
 
@@ -270,14 +269,14 @@ Add Star Rating (API) - Добавить оценку пользователя �
 
 Rating - Список всех оставленых Оценок Специалистам (в админке)
 
-5<img src="https://i.ibb.co/vXDzfSc/Django-Google-Chrome.jpg" width="300">
+<img src="https://i.ibb.co/vXDzfSc/Django-Google-Chrome.jpg" width="300">
 
 </details>
 
 ## AddUser
 <details><summary>UserList (API) - Создать Пользователя</summary>
 
-8<img src="https://i.ibb.co/VLLcQKK/screencapture-127-0-0-1-8000-auth-users-2022-07-01-12-22-50.png" width="300">
+<img src="https://i.ibb.co/VLLcQKK/screencapture-127-0-0-1-8000-auth-users-2022-07-01-12-22-50.png" width="300">
 
 </details>
 
