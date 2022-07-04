@@ -40,6 +40,11 @@ class AppointmentAdminForm(forms.ModelForm):
 
 """################################ ACTOR ######################################
 """
+class ReviewInline(admin.TabularInline):
+    """Отзывы (на странице специалиста)"""
+    model = Review
+    extra = 1
+    readonly_fields = ['parent', 'name', 'email']
 
 
 @admin.register(Worker)
@@ -47,6 +52,7 @@ class WorkerAdmin(admin.ModelAdmin):
     """Специалисты"""
     list_display = ("name", "speciality", "email", "phone", "get_image", "draft")
     readonly_fields = ("get_image",)
+    inlines = [ReviewInline]  # список [комментов] о Специалисте
 
     def get_image(self, obj):
         try:
@@ -130,14 +136,6 @@ class ServiceCategoryAdmin(admin.ModelAdmin):
 
 """################################ ServiceCategory ######################################
 """
-
-
-class ReviewInline(admin.TabularInline):
-    """Отзывы (на странице специалиста)"""
-    model = Review
-    extra = 1
-    readonly_fields = ['parent', 'name', 'email']
-
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):

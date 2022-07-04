@@ -6,6 +6,7 @@ from rest_framework import serializers
 from .models import Service, Appointment, Review, Rating, TimeLocation, Worker, Location, Schedule
 
 
+
 class ServiceListSerializer(serializers.ModelSerializer):
     """Список услуг """
     service_category = serializers.SlugRelatedField(slug_field="name", read_only=True)
@@ -47,6 +48,22 @@ class RecursiveSerializer(serializers.Serializer):
         serializer = self.parent.parent.__class__(value, context=self.context)
         return serializer.data
 
+class ReviewCreateSerializer(serializers.ModelSerializer):
+    """[POST] Добавление комментария (к специалисту) """
+
+    class Meta:
+        model = Review
+        fields = "__all__"
+
+
+class ReviewSerializer(serializers.ModelSerializer):
+    """[GET] Вывод комментария (к специалисту) """
+    children = RecursiveSerializer(many=True)
+
+    class Meta:
+        list_serializer_class = FilterReviewListSerializer
+        model = Review
+        fields = ("name", "text", "children")
 
 """################################ ACTOR ######################################
 """
@@ -55,18 +72,18 @@ class RecursiveSerializer(serializers.Serializer):
 class WorkerListSelializer(serializers.ModelSerializer):
     """ Вывод списка специалистов """
 
-    # rating_user = serializers.BooleanField()
-    # middle_star = serializers.IntegerField()
+    rating_user = serializers.BooleanField()
+    middle_star = serializers.IntegerField()
 
     class Meta:
         model = Worker
-        fields = ("id", "name", "speciality", "email", "phone", "image")
+        fields = ("id", "name", "speciality", "email", "phone", "image", "rating_user", "middle_star")
 
 
 class WorkerDetailSelializer(serializers.ModelSerializer):
     """ Вывод полного описания специалистов """
 
-    # reviews = ReviewSerializer(many=True)
+    reviews = ReviewSerializer(many=True)
 
     class Meta:
         model = Worker
@@ -133,22 +150,7 @@ class ScheduleDetailSelializer(serializers.ModelSerializer):
 """
 
 
-class ReviewCreateSerializer(serializers.ModelSerializer):
-    """[POST] Добавление комментария (к специалисту) """
 
-    class Meta:
-        model = Review
-        fields = "__all__"
-
-
-class ReviewSerializer(serializers.ModelSerializer):
-    """[GET] Вывод комментария (к специалисту) """
-    children = RecursiveSerializer(many=True)
-
-    class Meta:
-        list_serializer_class = FilterReviewListSerializer
-        model = Review
-        fields = ("name", "text", "children")
 
 
 """################################ COMMENT ######################################

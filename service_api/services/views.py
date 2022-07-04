@@ -106,6 +106,14 @@ class WorkersViewSet(viewsets.ReadOnlyModelViewSet):
     """" Вывод списка Специалистов [8] """
     queryset = Worker.objects.all()
 
+    def get_queryset(self):
+        workers = Worker.objects.filter(draft=False).annotate(
+            rating_user=models.Count("ratings", filter=models.Q(ratings__ip=get_client_ip(self.request)))
+        ).annotate(
+            middle_star=models.Sum(models.F('ratings__star')) / models.Count(models.F('ratings'))
+        )
+        return workers
+
     def get_serializer_class(self):
         if self.action == 'list':
             return WorkerListSelializer
