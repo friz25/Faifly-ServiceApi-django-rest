@@ -48,6 +48,8 @@ class RecursiveSerializer(serializers.Serializer):
         serializer = self.parent.parent.__class__(value, context=self.context)
         return serializer.data
 
+"""################################ COMMENT ######################################
+"""
 class ReviewCreateSerializer(serializers.ModelSerializer):
     """[POST] Добавление комментария (к специалисту) """
 
@@ -67,7 +69,12 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 """################################ ACTOR ######################################
 """
+class WorkerBaseListSelializer(serializers.ModelSerializer):
+    """ Вывод списка специалистов """
 
+    class Meta:
+        model = Worker
+        fields = ("id", "name", "speciality", "email", "phone", "image")
 
 class WorkerListSelializer(serializers.ModelSerializer):
     """ Вывод списка специалистов """
@@ -114,7 +121,7 @@ class TimeLocationListSelializer(serializers.ModelSerializer):
     """ Вывод списка ВремяМесто """
     time = serializers.SlugRelatedField(slug_field="time_start", read_only=True)
     location = LocationListSelializer(read_only=True)
-    worker = WorkerListSelializer(read_only=True)
+    worker = WorkerBaseListSelializer(read_only=True)
 
     class Meta:
         model = TimeLocation
@@ -149,18 +156,10 @@ class ScheduleDetailSelializer(serializers.ModelSerializer):
 """################################ ACTOR ######################################
 """
 
-
-
-
-
-"""################################ COMMENT ######################################
-"""
-
-
 class ServiceDetailSerializer(serializers.ModelSerializer):
     """ Полный список Услуг """
     service_category = serializers.SlugRelatedField(slug_field="name", read_only=True)
-    workers = WorkerListSelializer(read_only=True, many=True)
+    workers = WorkerBaseListSelializer(read_only=True, many=True)
 
     # reviews = ReviewSerializer(many=True)
 
