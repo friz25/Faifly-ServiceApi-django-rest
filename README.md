@@ -164,7 +164,7 @@ Location - Редактировать Локация / Кабинет (в адм
 
 Schedule (API) - Рабочие смены специалистов
 
-<img src="https://i.ibb.co/rpFY33V/screencapture-127-0-0-1-8000-api-v1-schedule-2022-07-04-09-53-51.png" width="300">
+<img src="https://i.ibb.co/1Q2L4y3/screencapture-127-0-0-1-8000-api-v1-schedule-2022-07-04-12-04-05.png" width="300">
 
 Schedule/1 (API) - Инфа об одной Рабочей смене специалиста
 
@@ -233,7 +233,7 @@ Service/1 (API) - Описание одной Услуги
 
 Service (API) - Список всех Услуг
 
-<img src="https://i.ibb.co/d7CfwD7/screencapture-127-0-0-1-8000-api-v1-service-2022-07-04-09-55-11.png" width="300">
+<img src="https://i.ibb.co/Hdxkm54/screencapture-127-0-0-1-8000-api-v1-service-2022-07-04-12-05-25.png" width="300">
 
 </details>
 
@@ -243,7 +243,7 @@ Service (API) - Список всех Услуг
 
 Worker - Редактировать Специалиста (в админке) 
 
-<img src="https://i.ibb.co/cL2pXgj/screencapture-127-0-0-1-8000-admin-services-worker-5-change-2022-07-01-13-00-04.png" width="300">
+<img src="https://i.ibb.co/pbM7D6R/screencapture-127-0-0-1-8000-admin-services-worker-5-change-2022-07-04-12-05-10.png" width="300">
 
 Worker - Список Специалистов (в админке)
 
@@ -251,11 +251,11 @@ Worker - Список Специалистов (в админке)
 
 Workers (API) - Список всех Специалистов
 
-<img src="https://i.ibb.co/qFTFg6D/screencapture-127-0-0-1-8000-api-v1-worker-2022-07-04-09-56-25.png" width="300">
+<img src="https://i.ibb.co/sPW3dYX/screencapture-127-0-0-1-8000-api-v1-worker-2022-07-04-12-05-39.png" width="300">
 
 Worker/1 (API) - Описание одного Специалиста
 
-<img src="https://i.ibb.co/mqD3q0g/Workers-Django-REST-framework-Google-Chrome.jpg" width="300">
+<img src="https://i.ibb.co/nLYG5K3/screencapture-127-0-0-1-8000-api-v1-worker-1-2022-07-04-12-05-56.png" width="300">
 
 </details>
 
