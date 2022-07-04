@@ -8,6 +8,7 @@ from .models import Service, Appointment, Review, Rating, TimeLocation, Worker, 
 
 class ServiceListSerializer(serializers.ModelSerializer):
     """Список услуг """
+    service_category = serializers.SlugRelatedField(slug_field="name", read_only=True)
 
     # rating_user = serializers.BooleanField()
     # middle_star = serializers.IntegerField()
@@ -20,6 +21,7 @@ class ServiceListSerializer(serializers.ModelSerializer):
 
 class AppointmentListSerializer(serializers.ModelSerializer):
     """Список Записей на услугу """
+    service = ServiceListSerializer(read_only=True, many=True)
 
     # rating_user = serializers.BooleanField()
     # middle_star = serializers.IntegerField()
@@ -53,6 +55,9 @@ class RecursiveSerializer(serializers.Serializer):
 class WorkerListSelializer(serializers.ModelSerializer):
     """ Вывод списка специалистов """
 
+    # rating_user = serializers.BooleanField()
+    # middle_star = serializers.IntegerField()
+
     class Meta:
         model = Worker
         fields = ("id", "name", "speciality", "email", "phone", "image")
@@ -60,6 +65,8 @@ class WorkerListSelializer(serializers.ModelSerializer):
 
 class WorkerDetailSelializer(serializers.ModelSerializer):
     """ Вывод полного описания специалистов """
+
+    # reviews = ReviewSerializer(many=True)
 
     class Meta:
         model = Worker
@@ -69,6 +76,9 @@ class WorkerDetailSelializer(serializers.ModelSerializer):
 class LocationListSelializer(serializers.ModelSerializer):
     """ Вывод списка Локаций / Кабинетов """
 
+    # rating_user = serializers.BooleanField()
+    # middle_star = serializers.IntegerField()
+
     class Meta:
         model = Location
         fields = ("id", "name", "floor", "adress", "image")
@@ -77,13 +87,33 @@ class LocationListSelializer(serializers.ModelSerializer):
 class LocationDetailSelializer(serializers.ModelSerializer):
     """ Вывод полного описания Локаций / Кабинетов """
 
+    # reviews = ReviewSerializer(many=True)
+
     class Meta:
-        model = Location
+        model = TimeLocation
+        fields = "__all__"
+
+class TimeLocationListSelializer(serializers.ModelSerializer):
+    """ Вывод списка ВремяМесто """
+    time = serializers.SlugRelatedField(slug_field="time_start", read_only=True)
+    location = LocationListSelializer(read_only=True)
+    worker = WorkerListSelializer(read_only=True)
+
+    class Meta:
+        model = TimeLocation
+        fields = ("id", "day_of_week", "time", "location", "worker")
+
+class TimeLocationDetailSelializer(serializers.ModelSerializer):
+    """ Вывод полного описания ВремяМесто """
+
+    class Meta:
+        model = TimeLocation
         fields = "__all__"
 
 
 class ScheduleListSelializer(serializers.ModelSerializer):
     """ Вывод списка Рабочих смен специалистов """
+    timelocation = TimeLocationListSelializer(read_only=True, many=True)
 
     class Meta:
         model = Schedule
@@ -92,6 +122,7 @@ class ScheduleListSelializer(serializers.ModelSerializer):
 
 class ScheduleDetailSelializer(serializers.ModelSerializer):
     """ Вывод полного описания Рабочих смен специалистов """
+    timelocation = TimeLocationListSelializer(read_only=True, many=True)
 
     class Meta:
         model = Schedule

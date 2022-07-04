@@ -9,8 +9,6 @@ from rest_framework.response import Response
 from .models import Worker, Location, Schedule
 
 from .serializers import (
-    # ActorListSelializer,
-    # ActorDetailSelializer,
     WorkerListSelializer,
     WorkerDetailSelializer,
     LocationListSelializer,
@@ -28,8 +26,8 @@ class WorkerViewSet(viewsets.ViewSet):
 
     def retrieve(self, request, pk=None):
         queryset = Worker.objects.all()
-        actor = get_object_or_404(queryset, pk=pk)
-        serializer = WorkerDetailSelializer(actor)
+        worker = get_object_or_404(queryset, pk=pk)
+        serializer = WorkerDetailSelializer(worker)
         return Response(serializer.data)
 
 
@@ -41,8 +39,8 @@ class LocationViewSet(viewsets.ViewSet):
 
     def retrieve(self, request, pk=None):
         queryset = Location.objects.all()
-        actor = get_object_or_404(queryset, pk=pk)
-        serializer = LocationDetailSelializer(actor)
+        location = get_object_or_404(queryset, pk=pk)
+        serializer = LocationDetailSelializer(location)
         return Response(serializer.data)
 
 
@@ -54,6 +52,6 @@ class ScheduleViewSet(viewsets.ViewSet):
 
     def retrieve(self, request, pk=None):
         queryset = Schedule.objects.all()
-        actor = get_object_or_404(queryset, pk=pk)
-        serializer = ScheduleDetailSelializer(actor)
+        schedule = get_object_or_404(queryset, pk=pk)
+        serializer = ScheduleDetailSelializer(schedule)
         return Response(serializer.data)

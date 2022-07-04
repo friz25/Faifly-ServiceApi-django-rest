@@ -67,23 +67,23 @@ class CharFilterInFilter(filters.BaseInFilter, filters.CharFilter):
 
 class ServiceFilter(filters.FilterSet):
     """ Фильтр Услуг (по Категориям услуг, Цене) [10] """
-    # service_category = CharFilterInFilter(field_name='service_category__name', lookup_expr='in')
-    # cost = filters.RangeFilter()
-    #
-    # class Meta:
-    #     model = Service
-    #     fields = ['service_category', 'cost']
+    service_category = CharFilterInFilter(field_name='service_category__name', lookup_expr='in')
+    cost = filters.RangeFilter()
+
+    class Meta:
+        model = Service
+        fields = ['service_category', 'cost']
     pass
 
 
 class AppointmentFilter(filters.FilterSet):
     """ Фильтр Записей на приём (по Услугам, Категориям услуг) [10] """
-    # service = CharFilterInFilter(field_name='service__title', lookup_expr='in')
-    # service_category = CharFilterInFilter(field_name='service_category__name', lookup_expr='in')
-    #
-    # class Meta:
-    #     model = Appointment
-    #     fields = ['service', 'service_category']
+    service = CharFilterInFilter(field_name='service__title', lookup_expr='in')
+    service_category = CharFilterInFilter(field_name='service_category__name', lookup_expr='in')
+
+    class Meta:
+        model = Appointment
+        fields = ['service', 'service_category']
     pass
 
 
