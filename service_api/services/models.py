@@ -60,7 +60,10 @@ class Location(models.Model):
                                          help_text="указать время в формате '18:00'")
 
     def __str__(self):
-        return f'{self.adress} Кабинет {self.name}'
+        return f'{self.adress}, {self.floor}, Кабинет {self.name}'
+
+    # def get_review(self):  # добавил
+    #     return self.reviews_set.filter(parent__isnull=True)
 
     def get_absolute_url(self):
         return reverse('services:location_detail', kwargs={"slug": self.name})
@@ -280,7 +283,8 @@ class Rating(models.Model):
     star = models.ForeignKey(RatingStar, on_delete=models.CASCADE, verbose_name="звезда")
     worker = models.ForeignKey(Worker, on_delete=models.CASCADE, verbose_name="Специалист", related_name="ratings")
 
-    # service = models.ForeignKey(Service, on_delete=models.CASCADE, verbose_name="Услуга", related_name="ratings")
+    # service = models.ForeignKey(Service, on_delete=models.CASCADE, verbose_name="Услуга", related_name="ratings2")
+    # location = models.ForeignKey(Location, on_delete=models.CASCADE, verbose_name="Локация / Кабинет", related_name="ratings3")
 
     def __str__(self):
         return f"{self.star} - {self.worker}"
@@ -300,7 +304,8 @@ class Review(models.Model):
     )
     worker = models.ForeignKey(Worker, verbose_name="Специалист", on_delete=models.CASCADE, related_name="reviews")
 
-    # service = models.ForeignKey(Service, verbose_name="Услуга", on_delete=models.CASCADE, related_name="reviews")
+    # service = models.ForeignKey(Service, verbose_name="Услуга", on_delete=models.CASCADE, related_name="reviews2")
+    # location = models.ForeignKey(Location, verbose_name="Локация / Кабинет", on_delete=models.CASCADE, related_name="reviews2")
 
     def __str__(self):
         return f"{self.name} - {self.worker}"

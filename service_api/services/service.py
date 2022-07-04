@@ -9,7 +9,7 @@ from .models import Service, Appointment
 
 
 class PaginationService(PageNumberPagination):
-    """ Пагинация [17] """
+    """ Пагинация Услуг (API) """
     page_size = 2
     max_page_size = 1000
 
@@ -26,7 +26,7 @@ class PaginationService(PageNumberPagination):
 
 
 class PaginationAppointment(PageNumberPagination):
-    """ Пагинация [17] """
+    """ Пагинация Записей на приём (API) """
     page_size = 2
     max_page_size = 1000
 
@@ -66,24 +66,24 @@ class CharFilterInFilter(filters.BaseInFilter, filters.CharFilter):
 
 
 class ServiceFilter(filters.FilterSet):
-    """ [10] """
-    # genres = CharFilterInFilter(field_name='genres__name', lookup_expr='in')
-    # year = filters.RangeFilter()
+    """ Фильтр Услуг (по Категориям услуг, Цене) [10] """
+    # service_category = CharFilterInFilter(field_name='service_category__name', lookup_expr='in')
+    # cost = filters.RangeFilter()
     #
     # class Meta:
     #     model = Service
-    #     fields = ['genres', 'year']
+    #     fields = ['service_category', 'cost']
     pass
 
 
 class AppointmentFilter(filters.FilterSet):
-    """ [10] """
-    # genres = CharFilterInFilter(field_name='genres__name', lookup_expr='in')
-    # year = filters.RangeFilter()
+    """ Фильтр Записей на приём (по Услугам, Категориям услуг) [10] """
+    # service = CharFilterInFilter(field_name='service__title', lookup_expr='in')
+    # service_category = CharFilterInFilter(field_name='service_category__name', lookup_expr='in')
     #
     # class Meta:
     #     model = Appointment
-    #     fields = ['genres', 'year']
+    #     fields = ['service', 'service_category']
     pass
 
 

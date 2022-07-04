@@ -15,7 +15,7 @@ class ServiceListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
         # fields = ("id", "title", "tagline", "service_category", "rating_user", "middle_star")
-        fields = ("id", "title", "tagline", "service_category")
+        fields = ("id", "title", "duration", "cost", "service_category")
 
 
 class AppointmentListSerializer(serializers.ModelSerializer):
@@ -27,7 +27,7 @@ class AppointmentListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Appointment
         # fields = ("id", "title", "tagline", "service_category", "rating_user", "middle_star")
-        fields = ("id", "user_name", "service")
+        fields = ("id", "user_name", "user_phone", "service", "appointment_date")
 
 
 class FilterReviewListSerializer(serializers.ListSerializer):
@@ -55,7 +55,7 @@ class WorkerListSelializer(serializers.ModelSerializer):
 
     class Meta:
         model = Worker
-        fields = ("id", "name", "image")
+        fields = ("id", "name", "speciality", "email", "phone", "image")
 
 
 class WorkerDetailSelializer(serializers.ModelSerializer):
@@ -71,7 +71,7 @@ class LocationListSelializer(serializers.ModelSerializer):
 
     class Meta:
         model = Location
-        fields = ("id", "name", "image")
+        fields = ("id", "name", "floor", "adress", "image")
 
 
 class LocationDetailSelializer(serializers.ModelSerializer):
@@ -87,7 +87,7 @@ class ScheduleListSelializer(serializers.ModelSerializer):
 
     class Meta:
         model = Schedule
-        fields = ("id", "name")
+        fields = ("id", "name", "timelocation")
 
 
 class ScheduleDetailSelializer(serializers.ModelSerializer):

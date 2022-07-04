@@ -143,7 +143,7 @@ SWAGGER (Полный отчёт)
 
 Locations (API) - Все Локации / Кабинеты
 
-<img src="https://i.ibb.co/Lp0SB3k/Locations-Django-REST-framework-Google-Chrome.jpg" width="300">
+<img src="https://i.ibb.co/JcFFDGH/screencapture-127-0-0-1-8000-api-v1-location-2022-07-04-09-54-14.png" width="300">
 
 Location/1 (API) - Инфа об одной Локация / Кабинет
 
@@ -164,7 +164,7 @@ Location - Редактировать Локация / Кабинет (в адм
 
 Schedule (API) - Рабочие смены специалистов
 
-<img src="https://i.ibb.co/0rwWNZr/Schedules-Django-REST-framework-Google-Chrome.jpg" width="300">
+<img src="https://i.ibb.co/rpFY33V/screencapture-127-0-0-1-8000-api-v1-schedule-2022-07-04-09-53-51.png" width="300">
 
 Schedule/1 (API) - Инфа об одной Рабочей смене специалиста
 
@@ -181,7 +181,7 @@ Schedule - Список всех Рабочих смен специалисто�
 
 Appointment (API) - Запись на приём
 
-<img src="https://i.ibb.co/S5S2QnX/screencapture-127-0-0-1-8000-api-v1-appointment-2022-07-01-12-20-26.png" width="300">
+<img src="https://i.ibb.co/KbF2vw4/Appointment-Django-REST-framework-Google-Chrome.jpg" width="300">
 
 Appointment - Запись на приём (в админке)
 
@@ -233,7 +233,7 @@ Service/1 (API) - Описание одной Услуги
 
 Service (API) - Список всех Услуг
 
-<img src="https://i.ibb.co/Zhzt2Yy/screencapture-127-0-0-1-8000-api-v1-service-2022-07-01-12-19-15.png" width="300">
+<img src="https://i.ibb.co/d7CfwD7/screencapture-127-0-0-1-8000-api-v1-service-2022-07-04-09-55-11.png" width="300">
 
 </details>
 
@@ -251,7 +251,7 @@ Worker - Список Специалистов (в админке)
 
 Workers (API) - Список всех Специалистов
 
-<img src="https://i.ibb.co/yh4MYm6/screencapture-127-0-0-1-8000-api-v1-worker-2022-07-01-12-28-35.png" width="300">
+<img src="https://i.ibb.co/qFTFg6D/screencapture-127-0-0-1-8000-api-v1-worker-2022-07-04-09-56-25.png" width="300">
 
 Worker/1 (API) - Описание одного Специалиста
 

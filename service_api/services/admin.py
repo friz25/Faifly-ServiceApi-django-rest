@@ -175,7 +175,7 @@ class ServiceAdmin(admin.ModelAdmin):
     list_per_page = 10
     actions = ['unpublish', 'publish']
     search_fields = ['title', 'tagline', 'service_category__name']  # + строка поиска
-    inlines = [ServiceShotsInline]  # [, ReviewInline] список [комментов, кадров из фильма] к фильму
+    inlines = [ServiceShotsInline]  # [, ReviewInline] список [комментов, кадров из фильма] к Услуге
     save_on_top = True
     save_as = True
     fieldsets = (
@@ -243,6 +243,7 @@ class AppointmentAdmin(admin.ModelAdmin):
     list_per_page = 10
     actions = ['unpublish', 'publish']
     search_fields = ['user_name', 'user_email', 'user_phone', 'appointment_date', 'service__title']  # + строка поиска
+    # inlines = [ReviewInline]  # список [комментов] к "Записи на приём"
 
     save_on_top = True
     save_as = True
