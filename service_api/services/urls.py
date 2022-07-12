@@ -15,7 +15,9 @@ urlpatterns = format_suffix_patterns([
     # http://127.0.0.1:8000/api/v1/appointment/
     path("appointment/<int:pk>/", views.AppointmentViewSet.as_view({'get': 'retrieve'})),
     # http://127.0.0.1:8000/api/v1/appointment/1
-
+    
+    path("api/v1/appointment/add/", views.AppointmentCreateViewSet.as_view({'post': 'create'})),
+    # http://127.0.0.1:8000/api/v1/appointment/add/
     path("review/", views.ReviewCreateViewSet.as_view({'post': 'create'})),
     # http://127.0.0.1:8000/api/v1/review/
     path("rating/", views.AddStarRatingViewSet.as_view({'post': 'create'})),
@@ -39,7 +41,6 @@ urlpatterns = format_suffix_patterns([
 http://127.0.0.1:8000/api/v1/service/        #GOOD
 http://127.0.0.1:8000/api/v1/service/1           #GOOD
 http://127.0.0.1:8000/api/v1/appointment/       #GOOD
-http://127.0.0.1:8000/api/v1/appointment/1      # ERROR 
 
 http://127.0.0.1:8000/api/v1/review/                          #GOOD
 http://127.0.0.1:8000/api/v1/rating/ {"star":3, "worker": 1}   #GOOD
