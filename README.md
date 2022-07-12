@@ -177,6 +177,10 @@ Schedule - Список всех Рабочих смен специалисто�
 ## Appointment
 <details><summary>Appointment (Запись на приём) </summary>
 
+Appointment (API) - Добавление записи на приём (к специалисту)
+
+<img src="https://i.ibb.co/TvJ7Sht/Appointment-Create-Django-REST-framework-Google-Chrome.jpg" width="300">
+
 Appointment (API) - Запись на приём
 
 <img src="https://i.ibb.co/KbF2vw4/Appointment-Django-REST-framework-Google-Chrome.jpg" width="300">
