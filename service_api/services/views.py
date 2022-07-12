@@ -17,6 +17,7 @@ from .serializers import (
 
     AppointmentListSerializer,
     AppointmentDetailSerializer,
+    AppointmentCreateSerializer,
 
     FilterReviewListSerializer,
     RecursiveSerializer,
@@ -87,7 +88,10 @@ class AppointmentViewSet(viewsets.ReadOnlyModelViewSet):
 """###########################################################################
 *ModelViewSet - позволяет нам реализ-ть сразу добавление, вывод списка, одной записи, обновления, удаления записи
 ###########################################################################"""
-
+class AppointmentCreateViewSet(viewsets.ModelViewSet):
+    """ [POST] Добавление записи на приём (к специалисту) [14]"""
+    serializer_class = AppointmentCreateSerializer
+    
 class ReviewCreateViewSet(viewsets.ModelViewSet):
     """ [POST] Добавление комментария (к специалисту) [14]"""
     serializer_class = ReviewCreateSerializer
