@@ -50,6 +50,14 @@ class RecursiveSerializer(serializers.Serializer):
 
 """################################ COMMENT ######################################
 """
+class AppointmentCreateSerializer(serializers.ModelSerializer):
+    """[POST] Добавление записи на приём (к специалисту) """
+
+    class Meta:
+        model = Appointment
+        fields = "__all__"
+        
+        
 class ReviewCreateSerializer(serializers.ModelSerializer):
     """[POST] Добавление комментария (к специалисту) """
 
